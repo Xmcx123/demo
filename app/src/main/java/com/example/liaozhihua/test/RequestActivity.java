@@ -3,8 +3,12 @@ package com.example.liaozhihua.test;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.IOException;
+
 import com.example.liaozhihua.test.network.request.GetRequest_Interface;
 import com.example.liaozhihua.test.network.request.Translation;
+import com.example.liaozhihua.test.observer.Observer;
+import com.example.liaozhihua.test.proxy.DelegateObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,9 +23,21 @@ public class RequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
         request();
+        requestTest();
+        observerTest();
     }
-    public void request() {
 
+    private void observerTest() {
+        Observer<String> stringObserver = new Observer<>();
+        stringObserver.create();
+    }
+
+    private void requestTest() {
+        DelegateObject delegateObject = new DelegateObject();
+        delegateObject.getDynamicProxy();
+    }
+
+    public void request() {
         //步骤4:创建Retrofit对象
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://fy.iciba.com/") // 设置 网络请求 Url
@@ -39,8 +55,10 @@ public class RequestActivity extends AppCompatActivity {
             //请求成功时回调
             @Override
             public void onResponse(Call<Translation> call, Response<Translation> response) {
-                // 步骤7：处理返回的数据结果
-                response.body().show();
+                if (response != null && response.body()!=null) {
+                    // 步骤7：处理返回的数据结果
+                    response.body().show();
+                }
             }
 
             //请求失败时回调

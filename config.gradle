@@ -1,0 +1,12 @@
+ext {
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.1"
+    ]
+    supportLibrary = "25.4.0"
+    tinkerVerison = "1.9.1"
+    dependencies = [
+            "multidex"       : "com.android.support:multidex:1.0.1",
+            "okhttp3"       : "com.squareup.okhttp3:okhttp:3.9.0"
+            ]
+}

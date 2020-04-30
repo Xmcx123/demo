@@ -3,17 +3,27 @@ package com.example.processors;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.TypeElement;
 
 import com.example.annotations.MyAnnotation;
+import com.google.auto.service.AutoService;
 
-/**
+/**方案1
  * 运行注解处理器
- * 1、在processors库的main目录下新建re
+ * 1、在processors库的main目录下新建resources资源文件夹；
+ * 2、在resources文件夹下建立META_INF/services 目录文件夹；
+ * 3、在META-INF/services目录文件夹下创建 javax.annotation.processing.Processor 文件；
+ *  * 4、在 javax.annotation.processing.Processor 文件写入注解处理器的全称，包括包路径；
  */
+
+/** 方案2
+ * 每一个注解处理器类都必须有一个空的构造函数，默认不写就行;
+ */
+@AutoService(Processor.class)//注册
 public class MyProcessor extends AbstractProcessor {
 
     /**

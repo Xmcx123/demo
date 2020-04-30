@@ -1,1 +1,1 @@
-include ':app', ':multidex', ':annotations', ':annotations', ':processors'
+include ':app', ':multidex', ':annotations', ':annotations', ':processors', ':api'

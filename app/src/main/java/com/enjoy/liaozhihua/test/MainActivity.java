@@ -3,21 +3,33 @@ package com.enjoy.liaozhihua.test;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.enjoy.liaozhihua.test.activity.SmartRefreshActivity;
 import com.enjoy.liaozhihua.test.enjoyfix.EnjoyFixActivity;
 import com.enjoy.liaozhihua.test.view.CheckView;
 import com.enjoy.liaozhihua.test.view.PieView;
+import com.example.annotations.BindView;
+import com.example.annotations.MyAnnotation;
+import com.example.mylibrary.MyButterknife;
 
+@MyAnnotation("Hello World")
 public class MainActivity extends AppCompatActivity {
+    @BindView(R.id.id_pview)
+    PieView idPview2;
 
+    @BindView(R.id.test)
+    TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
+        MyButterknife.bind(this);
+        test.setText("HHHHH");
+//        initView();
     }
+
 
     private void initView() {
         PieView idPview = findViewById(R.id.id_pview);
@@ -37,5 +49,11 @@ public class MainActivity extends AppCompatActivity {
 //        Intent intent = new Intent(this, EnjoyFixActivity.class);
         Intent intent = new Intent(this, SmartRefreshActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MyButterknife.unBind(this);
     }
 }

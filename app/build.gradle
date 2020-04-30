@@ -33,6 +33,12 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.0.2'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     api librarys.okhttp3
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+//    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+//    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
+
+    implementation project(':annotations')
 }
 
 class CustomPluginInBuildGradle implements Plugin<Project> {
@@ -45,6 +51,3 @@ class CustomPluginInBuildGradle implements Plugin<Project> {
         }
     }
 }
-
-
-

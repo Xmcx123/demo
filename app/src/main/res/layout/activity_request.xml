@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RequestActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#009959"
+              android:fitsSystemWindows="true"
 
-</android.support.constraint.ConstraintLayout>
+              tools:context=".RequestActivity">
+    <TextView
+        android:text="安信证券"
+
+        android:textColor="@color/bg"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="200dp"
+        android:background="#009959" />
+    <Button
+
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="#ff669d"/>
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    android:visibility="gone"/>
+
+</LinearLayout>

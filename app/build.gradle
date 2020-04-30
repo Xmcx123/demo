@@ -17,6 +17,8 @@ android {
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
 
     }
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
     buildTypes {
         release {
             minifyEnabled false

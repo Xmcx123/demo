@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: CustomPluginInBuildGradle
 
-def cfg =rootProject.ext.android
+def cfg = rootProject.ext.android
 def librarys = rootProject.ext.dependencies
 
 android {
@@ -45,13 +45,13 @@ dependencies {
 
     implementation project(':annotations')
     implementation project(':api')
-    annotationProcessor project( ':processors')
+    annotationProcessor project(':processors')
 }
 
 class CustomPluginInBuildGradle implements Plugin<Project> {
     @Override
     void apply(Project target) {
-        target.task('showCustomPluginInBuildGradle'){
+        target.task('showCustomPluginInBuildGradle') {
             doLast {
                 println("task in CustomPluginInBuildGradle")
             }

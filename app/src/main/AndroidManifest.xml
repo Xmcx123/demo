@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.enjoy.liaozhihua.test">
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.KeepActivity"
+        android:excludeFromRecents="true"
+        android:exported="true"
+        android:finishOnTaskLaunch="false"
+        android:launchMode="singleInstance"
+        android:theme="@style/KeepTheme">
+        </activity>
         <activity android:name=".activity.SmartRefreshActivity">
         </activity>
         <activity android:name=".view.Main3Activity">
@@ -29,6 +36,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <service android:name=".service.ForegroundService"
+        android:exported="true"></service>
     </application>
 
 </manifest>

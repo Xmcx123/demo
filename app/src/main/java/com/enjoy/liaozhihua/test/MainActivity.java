@@ -3,10 +3,12 @@ package com.enjoy.liaozhihua.test;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.enjoy.liaozhihua.test.activity.SmartRefreshActivity;
 import com.enjoy.liaozhihua.test.enjoyfix.EnjoyFixActivity;
+import com.enjoy.liaozhihua.test.service.ForegroundService;
 import com.enjoy.liaozhihua.test.view.CheckView;
 import com.enjoy.liaozhihua.test.view.PieView;
 import com.example.annotations.BindView;
@@ -25,9 +27,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MyButterknife.bind(this);
-        test.setText("HHHHH");
+//        MyButterknife.bind(this);
+//        test.setText("HHHHH");
 //        initView();
+//        String s1 = s.toUpperCase();
+        boolean empty = TextUtils.isEmpty("");
+        boolean empty1 = TextUtils.isEmpty(null);
+        boolean addd = "".contains("addd");
+        boolean addd2 = "".contains("addd");
+
+//        KeepManager.getManager().registerReceiver(this);
+        Intent intent = new Intent(this, ForegroundService.class);
+        startService(intent);
     }
 
 
@@ -54,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+//        KeepManager.getManager().unRegisterReceiver(this);
+        Intent intent = new Intent(this, ForegroundService.class);
+        stopService(intent);
         MyButterknife.unBind(this);
     }
 }
